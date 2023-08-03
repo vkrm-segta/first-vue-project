@@ -1,5 +1,5 @@
 <template>
-  <h1>Todo List</h1>
+  <h1 class="text-3xl font-semibold mb-5">Todo List</h1>
   <di class="flex">
     <AddNewTodo @on-addTodo="addTodo($event)" />
   </di>
@@ -7,8 +7,9 @@
     <TodoItem
       v-for="(todo, index) in todos"
       :key="index"
-      :todoValue="todo.todoValue"
-      :complete="todo.complete"
+      :todos="todos"
+      :todoValue="todo?.todoValue"
+      :complete="todo?.complete"
       @on-delete="deleteTodo(todo)"
       @on-toggle="toggelTodo(todo)"
       @on-edit="editTodo(todo, $event)"
@@ -21,25 +22,13 @@ import TodoItem from './TodoItem';
 import AddNewTodo from './AddNewTodo';
 
 export default {
-  name: 'TodoList',
   components: {
     TodoItem,
     AddNewTodo,
   },
   data() {
     return {
-      todos: [
-        {
-          id: '1',
-          todoValue: 'Washing your clothes',
-          complete: false,
-        },
-        {
-          id: '2',
-          todoValue: 'Coding after work',
-          complete: false,
-        },
-      ],
+      todos: [],
     };
   },
   methods: {

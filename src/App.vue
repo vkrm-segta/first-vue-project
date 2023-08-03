@@ -1,11 +1,9 @@
 <template>
   <NavbarComp />
   <router-view />
-  <!-- <HelloWorld msg="Welcome App" /> -->
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue';
 import NavbarComp from './components/NavbarComp.vue';
 import './assets/style.css';
 
@@ -13,7 +11,6 @@ export default {
   name: 'App',
   components: {
     NavbarComp,
-    // HelloWorld,
   },
 };
 </script>

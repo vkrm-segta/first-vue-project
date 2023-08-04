@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import TodoList from './pages/TodoList'
-import AboutMe from './pages/AboutMe'
+import TodoList from './pages/todoList/TodoList'
+import TableData from './pages/table/TableData'
 
 const routes = [
-    { path: '/', component: TodoList },
-    { path: '/about', component: AboutMe }
+    { path: '/', component: TableData },
+    { path: '/todo', component: TodoList },
 ]
 
 const router = createRouter({

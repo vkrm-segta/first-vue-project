@@ -38,7 +38,11 @@
           <h1 class="flex w-[14%] mr-2">{{ data.date }}</h1>
           <h1 class="flex w-[12%] mr-2">{{ data.status }}</h1>
         </div>
-        <TableDesc v-if="data.description" :data="data" />
+        <TableDesc
+          v-if="data.description"
+          :data="data"
+          @update-data="updateData"
+        />
       </div>
     </li>
   </ul>
@@ -79,13 +83,18 @@ export default {
   },
 
   methods: {
-    logMessage() {
-      console.log('desciption value', this.showDetails);
-    },
     toggleDescription(index) {
       this.tableData[index].description = !this.tableData[index].description;
+    },
 
-      console.log('desciption value', this.tableData);
+    updateData(updatedData) {
+      this.tableData = this.tableData.map((item) => {
+        if (item.id === updatedData.id) {
+          return { ...updatedData };
+        } else {
+          return item;
+        }
+      });
     },
   },
 };

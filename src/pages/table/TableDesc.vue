@@ -8,7 +8,7 @@
           v-else
           v-model="newData.name"
           type="text"
-          class="font-normal ml-2 border border-black px-2 outline-none"
+          class="font-normal border border-black px-2 ml-2 outline-none"
         />
       </h1>
       <h1 class="flex items-center font-medium">
@@ -55,10 +55,17 @@
       </h1>
     </div>
 
-    <div class="ml-auto mt-auto">
+    <div class="flex ml-auto mt-auto">
+      <button
+        v-if="edit"
+        @click="cancelEditList()"
+        class="border-2 border-gray-600 font-medium text-gray-600 px-4"
+      >
+        Cancel
+      </button>
       <button
         @click="editList()"
-        class="border-2 border-gray-600 font-medium text-gray-600 px-4"
+        class="border-2 border-gray-600 font-medium text-gray-600 px-4 ml-2"
       >
         {{ edit ? 'Save' : 'Edit' }}
       </button>
@@ -96,8 +103,11 @@ export default {
   methods: {
     editList() {
       if (this.edit) {
-        this.newData = { ...this.data };
+        this.$emit('update-data', { ...this.newData });
       }
+      this.edit = !this.edit;
+    },
+    cancelEditList() {
       this.edit = !this.edit;
     },
   },

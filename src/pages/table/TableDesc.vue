@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-start w-full border border-t-0 text-lg py-4 px-4">
     <div class="flex flex-col w-[26%] ml-[3%]">
-      <div class="flex">
+      <div class="flex flex-wrap">
         <div class="w-20 font-medium mr-2">
           <h1 class="flex">Name:</h1>
           <h1 class="flex" :class="edit ? 'mt-1.5' : 'mt-0'">Topic:</h1>
